@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Task } from './../../Task';
 
@@ -8,15 +8,15 @@ import { Task } from './../../Task';
   styleUrls: ['./task-item.component.css'],
 })
 export class TaskItemComponent implements OnInit {
-  @Input() task: Task = {
-    id: 0,
-    text: 'your task here',
-    day: '01 january 2021',
-    reminder: false,
-  };
+  @Input() task!: Task;
+  @Output() onDeleteTask = new EventEmitter();
 
   faTimes: IconDefinition = faTimes;
   constructor() {}
 
   ngOnInit(): void {}
+
+  onDelete(task: Task) {
+    this.onDeleteTask.emit();
+  }
 }
