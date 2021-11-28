@@ -1,8 +1,9 @@
 <header>
   <h3>{{ title }}</h3>
   <app-button
-    color="green"
-    text="Add"
+    *ngIf="isHome()"
+    color="{{ showAddTask ? 'red' : 'green' }}"
+    text="{{ showAddTask ? 'Close' : 'Add' }}"
     (btnClick)="toggleAddTask()"
   ></app-button>
 </header>
